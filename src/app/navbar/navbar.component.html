@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-xl mb-5 px-2 fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="home">
+      <img src="../../assets/logo.png" width="65px"/>
+    </a>
+    <button
+      class="navbar-toggler bg-white"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="nfts">
+            Marketplace
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="collections">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/">Resources</a>
+        </li>
+      </ul>
+      <div class="d-lg-flex">
+        <div class="d-flex align-items-center gap-4" *ngIf="isLoggedIn(); else notLoggedInOptions">
+          <div>
+          </div>
+          <div *ngIf="user">
+            <a [routerLink]="['/users', user.id]">
+              <img [src]="user.profil_picture" class="profil_picture" alt="" width="60px">
+            </a>
+          </div>
+        <div *ngIf="user.roles[0] == 'ROLE_ADMIN'">
+          <a href="/users">
+            <button mat-raised-button color="accent">
+              admin
+            </button>
+          </a>
+        </div>
+          <button (click)="logout()" mat-raised-button color="accent">
+            Logout
+          </button>
+        </div>
+        <ng-template #notLoggedInOptions>
+          <a href="login">
+            <button mat-raised-button color="accent">Login</button>
+          </a>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,23 @@
+nav{
+    background-color: rgb(115, 194, 251);
+}
+
+a{
+    font-weight: 400;
+    color: rgba(4, 13, 42, 0.81);
+}
+.nav-link{
+    border-radius: 10px;
+    padding: 15px;
+}
+.nav-link:hover{
+    color: #15a933;
+}
+.profil_picture{
+    padding: 10px;
+}
+.profil_picture:hover {
+    border-radius: 20%;
+    background-color: rgba(255, 255, 255, 0.152);
+    cursor: pointer;
+}

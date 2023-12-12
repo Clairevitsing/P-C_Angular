@@ -1,0 +1,20 @@
+<section class="container">
+    <div class="formulaire col-4 mx-auto form text-center">
+      <form class="form" name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+          <h4 class="text-white">Login</h4>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="pseudo" id="pseudo" [(ngModel)]="form.pseudo" #pseudo="ngModel" placeholder="name@example.com">
+            <label for="floatingInput">Pseudo</label>
+            </div>
+            <div class="form-floating ">
+              <input type="password" class="form-control"  name="password" id="password" [(ngModel)]="form.password" #password="ngModel" placeholder="Password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="mt-3" mat-raised-button color="accent" type="submit" class="connexion">Submit</button>
+            <hr>
+          </form>
+          <a href="users/create">
+            <button mat-raised-button color="warn" class="inscription">Sign up</button>
+          </a>
+    </div>
+</section>

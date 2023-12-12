@@ -1,0 +1,11 @@
+<div  *ngIf="isLoggedIn(); else notLoggedInOptions"  >
+    <div *ngFor="let user of users" class="text-black">
+        <h4>Pseudo: {{ user.pseudo}}</h4>
+        <button [routerLink]="['/users', user.id]">Show details</button>
+        <button (click)="userDelete(user.id)" mat-raised-button color="warn">DELETE</button>
+        <hr>
+    </div>
+</div>
+<ng-template #notLoggedInOptions>
+    <h1 class="text-white">Login</h1>
+</ng-template>

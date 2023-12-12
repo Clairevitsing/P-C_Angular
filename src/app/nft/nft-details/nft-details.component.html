@@ -1,0 +1,108 @@
+<section class="container" *ngIf="nft">
+    <div  class="d-lg-flex gap-5 text-black">
+        <img [src]="nft.img" class="nft img-fluid col-12 col-lg-6" alt="">
+        <div>
+            <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex gap-1 align-items-center">
+                  <a [routerLink]="['/collections', nft.nFTCollection.id]">
+                    <p class=" m-0">{{nft.nFTCollection.name}}</p>
+                  </a>
+                  <img src="../../../assets/completer.png" width="15px" height="15px" alt="">
+                </div>
+                <share-buttons theme="modern-light"
+                  [include]="['copy']"
+                  [showIcon]="true"
+                  [showText]="true"
+                  url="http://localhost:4200/nfts/{{nft.id}}"
+                  description="Bouton partagé P&C"
+                  twitterAccount="Vitsingz">
+                </share-buttons>
+            </div>
+            <h1 class="my-5">{{nft.name}} #{{nft.id}}</h1>
+            <div class="d-flex gap-2 mb-5">
+                <img src="../../../assets/photo-de-profil.png" width="45px" height="45px" alt="">
+                <div>
+                    <p class="m-0 fw-lighter">Propriétaire</p>
+                    <a class="user" [routerLink]="['/users', nft.user.id]">
+                      <p class="text-danger">{{nft.user.pseudo}}</p>
+                    </a>
+                </div>
+            </div>
+            <div class="infos p-5">
+              <p class="text-white">Ce NFT a été créé le <strong>{{ nft.launch_date| date:'dd MMMM yyyy'}}</strong> a {{nft.launch_date| date:'h:mm a'}}</p>
+              <div class="d-flex gap-2">
+                <p class="m-0 text-white">Son prix de lancement est de</p>
+                <div class="d-flex align-items-center ml-2">
+                    <img src="../../../assets/ethereum.png" width="10px" height="10px" alt="Ethereum Icon">
+                    <p class=" m-0"><strong>{{nft.launch_price_eth}}</strong></p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="nft" class="accordion col col-lg-6 mt-4" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+              Description
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p class="fw-lighter">{{nft.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="nft" class="accordion col col-lg-6 mt-4" id="accordionDetails">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo">
+              Details du token
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionDetails">
+            <div class="accordion-body">
+              <div class="d-flex justify-content-between">
+                <p>Identifiant du token</p>
+                <p class="fw-lighter">{{nft.id}}</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>Blockchain</p>
+                <p class="fw-lighter">Ethereum</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p>Token standards</p>
+                <p class="fw-lighter">ERC721</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-white mt-5">
+        <h2 class="text-center mb-5">Plus de cette collection</h2>
+        <div class="d-lg-flex justify-content-center gap-5">
+          <div *ngFor="let nft of threeNft">
+            <a [routerLink]="['/nfts', nft.id]">
+              <div class="card mb-4 mx-auto nft" style="display: inline-block;">
+                <img [src]="nft.img" class="card-img-top" alt="NFT Image">
+                <div class="card-body">
+                  <div>
+                    <div class="d-flex gap-1 align-items-center mb-2">
+                      <p class="m-0 text-white">{{ nft.nFTCollection.name}}</p>
+                      <img src="../../../assets/completer.png" width="10px" height="10px" alt="badge vérifié">
+                    </div>
+                  </div>
+                  <h6 class="card-title text-light">{{ nft.name }}</h6>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a [routerLink]="['/collections', nft.nFTCollection.id]">
+            <button mat-stroked-button>Voir la collection</button>
+          </a>
+        </div>
+      </div>
+</section>

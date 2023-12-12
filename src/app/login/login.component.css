@@ -1,0 +1,23 @@
+.formulaire{
+    background-color: rgb(41, 69, 211);
+    padding: 30px 60px 30px 60px;
+    border: white 1px solid;
+    border-radius: 10px;
+    box-shadow: 10px;
+    height: 50vh;
+}
+.image{
+    height: 100vh;
+    background-image: url(../../assets/background.jpg);
+    width: 400px;
+}
+hr{
+    color: white;
+}
+.connexion{
+    width: 200px;
+    margin-top: 25px;
+}
+.inscription{
+    width: 200px;
+}
